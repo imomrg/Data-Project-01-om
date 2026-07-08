@@ -1,456 +1,346 @@
+# 📘 Pandas
 
+## 1. What is Pandas?
 
+**Pandas** is an **open-source Python library** used to **read, organize, clean, analyze, and manipulate data**.
 
+It is one of the most popular libraries used in **Machine Learning** and **Data Analysis**.
 
-## \*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\* PANDAS \*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*
+### Common Uses
 
+- 📄 Read CSV and Excel files
+- 🔍 Filter data
+- 📊 Sort data
+- 🧹 Clean missing values
+- 📈 Analyze data
+- 🤖 Prepare datasets for Machine Learning
 
+---
 
-#### 1\. Pandas
+# 2. Import Pandas
 
-\-> Open source Python library
+```python
+import pandas as pd
+```
 
-\-> Used to read, organize, clean, analyse \& manipulate data.
+Here,
 
-\-> Mostly used in Machine Learning \& Data Analysis.
+- **pandas** → Library name
+- **pd** → Alias (short name used for convenience)
 
+---
 
+# 3. Data Structures in Pandas
 
-Uses:
+Pandas mainly provides **two data structures**:
 
-\- Read CSV / Excel files
+## A. Series
 
-\- Filter data
+A **Series** is a **one-dimensional (1D) array**.
 
-\- Sort data
+It contains a **single column of data**.
 
-\- Clean missing data
+### Example
 
-\- Analyse data
-
-\- Prepare dataset for ML
-
-
-
-\---------------------------------------------------------------
-
-#### 
-
-#### 2\. Import Pandas
-
-
-
+```python
 import pandas as pd
 
-
-
-pd --> Alias (short name of pandas)
-
-
-
-\---------------------------------------------------------------
-
-
-
-#### 3\. DATA STRUCTURES IN PANDAS
-
-
-
-A) SERIES
-
-\-> 1D Array (Single Column)
-
-
-
-import pandas as pd
-
-
-
-marks = pd.Series(\[90,86,98])
-
-
+marks = pd.Series([90, 86, 98])
 
 print(marks)
+```
 
+### Output
 
-
-OUTPUT
-
-
-
+```text
 0    90
-
 1    86
-
 2    98
+dtype: int64
+```
 
+---
 
+## B. DataFrame
 
+A **DataFrame** is a **two-dimensional (2D) table**.
 
+It consists of **rows and columns**, just like an Excel sheet or database table.
 
+It is the **most commonly used data structure** in Machine Learning.
 
+### Example
 
-B) DATAFRAME
-
-\-> 2D Table
-
-\-> Contains Rows + Columns
-
-\-> Most used in ML
-
-
-
+```python
 data = {
-
-&#x20;   "Name":\["A","B"],
-
-&#x20;   "Marks":\[80,90]
-
+    "Name": ["A", "B"],
+    "Marks": [80, 90]
 }
-
-
 
 df = pd.DataFrame(data)
 
+print(df)
+```
 
+### Output
 
-OUTPUT
+```text
+  Name  Marks
+0    A     80
+1    B     90
+```
 
+---
 
+# 4. Read a Dataset
 
-&#x20;  Name  Marks
+## Read a CSV File
 
-0    A      80
+```python
+df = pd.read_csv("student.csv")
+```
 
-1    B      90
+## Read an Excel File
 
+```python
+df = pd.read_excel("student.xlsx")
+```
 
+---
 
-\---------------------------------------------------------------
+# 5. View Data
 
+## Display the First 5 Rows
 
-
-#### 4\. READ DATASET
-
-
-
-CSV File
-
-
-
-df = pd.read\_csv("student.csv")
-
-
-
-Excel File
-
-
-
-df = pd.read\_excel("student.xlsx")
-
-
-
-\---------------------------------------------------------------
-
-
-
-#### 5\. VIEW DATA
-
-
-
-First 5 rows
-
+```python
 df.head()
+```
 
+---
 
+## Display the First 10 Rows
 
-First 10 rows
-
+```python
 df.head(10)
+```
 
+---
 
+## Display the Last 5 Rows
 
-Last 5 rows
-
+```python
 df.tail()
+```
 
+---
 
+# 6. Basic Functions
 
-\---------------------------------------------------------------
+## Get Dataset Shape
 
-
-
-#### 6\. BASIC FUNCTIONS
-
-
-
+```python
 df.shape
+```
 
-\-> Returns (Rows, Columns)
+Returns:
 
+```text
+(Rows, Columns)
+```
 
+### Example
 
-Example:
+```text
+(1000, 5)
+```
 
-(1000,5)
+- **1000** → Number of Rows
+- **5** → Number of Columns
 
-1000 = Rows
+---
 
-5 = Columns
+## Show Column Names
 
-
-
-\----------------------------
-
-
-
+```python
 df.columns
+```
 
-\-> Shows all column names
+Displays all column names.
 
+---
 
+## Dataset Information
 
-\----------------------------
-
-
-
+```python
 df.info()
-
-
+```
 
 Shows:
 
-\- Column Names
+- Column names
+- Data types
+- Missing values
+- Number of rows
 
-\- Data Types
+---
 
-\- Missing Values
+## Statistical Summary
 
-\- Number of Rows
-
-
-
-\----------------------------
-
-
-
+```python
 df.describe()
+```
 
+Shows statistics such as:
 
+- Count
+- Mean
+- Standard Deviation (Std)
+- Minimum
+- Maximum
+- Quartiles
 
-Shows:
+---
 
-\- Count
+# 7. Select Data
 
-\- Mean
+## Select a Single Column
 
-\- Std (Standard Deviation)
+```python
+df["Marks"]
+```
 
-\- Min
+---
 
-\- Max
+## Select Multiple Columns
 
-\- Quartiles
+```python
+df[["Name", "Marks"]]
+```
 
+---
 
+# 8. Filter Data
 
-\---------------------------------------------------------------
+## Example: Display Students with Marks Greater Than 80
 
+```python
+df[df["Marks"] > 80]
+```
 
+---
 
-#### 7\. SELECT DATA
+# 9. Sort Data
 
+## Ascending Order
 
+```python
+df.sort_values("Marks")
+```
 
-Single Column
+---
 
+## Descending Order
 
+```python
+df.sort_values("Marks", ascending=False)
+```
 
-df\["Marks"]
+---
 
+# 10. Handle Missing Values
 
+## Check Missing Values
 
-Multiple Columns
-
-
-
-df\[\["Name","Marks"]]
-
-
-
-\---------------------------------------------------------------
-
-
-
-#### 8\. FILTER DATA
-
-
-
-Marks > 80
-
-
-
-df\[df\["Marks"] > 80]
-
-
-
-\---------------------------------------------------------------
-
-
-
-#### 9\. SORT DATA
-
-
-
-Ascending
-
-
-
-df.sort\_values("Marks")
-
-
-
-Descending
-
-
-
-df.sort\_values("Marks", ascending=False)
-
-
-
-\---------------------------------------------------------------
-
-#### 
-
-#### 10\. MISSING VALUES
-
-
-
-Check Missing Values
-
-
-
+```python
 df.isnull()
+```
 
+---
 
+## Count Missing Values
 
-Count Missing Values
-
-
-
+```python
 df.isnull().sum()
+```
 
+---
 
+## Remove Missing Values
 
-Remove Missing Values
-
-
-
+```python
 df.dropna()
+```
 
+---
 
+## Fill Missing Values
 
-Fill Missing Values
-
-
-
+```python
 df.fillna(0)
+```
 
+---
 
+# 11. Important Functions
 
-\---------------------------------------------------------------
+| Function | Code |
+|----------|------|
+| Average | `df["Marks"].mean()` |
+| Maximum | `df["Marks"].max()` |
+| Minimum | `df["Marks"].min()` |
+| Sum | `df["Marks"].sum()` |
+| Count | `df["Marks"].count()` |
+| Unique Values | `df["Grade"].unique()` |
 
+---
 
+# 12. Save Data
 
-#### 11\. IMPORTANT FUNCTIONS
+## Save as CSV
 
+```python
+df.to_csv("new.csv")
+```
 
+---
 
-Average         df\["Marks"].mean()
+## Save as Excel
 
+```python
+df.to_excel("new.xlsx")
+```
 
+---
 
-Maximum         df\["Marks"].max()
+# 13. Machine Learning Workflow
 
-
-
-Minimum         df\["Marks"].min()
-
-
-
-Sum             df\["Marks"].sum()
-
-
-
-Count           df\["Marks"].count()
-
-
-
-Unique Values   df\["Grade"].unique()
-
-
-
-\---------------------------------------------------------------
-
-#### 
-
-#### 12\. SAVE DATA
-
-#### 
-
-CSV
-
-
-
-df.to\_csv("new.csv")
-
-
-
-Excel
-
-
-
-df.to\_excel("new.xlsx")
-
-
-
-\---------------------------------------------------------------
-
-
-
-#### 13\. ML FLOW
-
-
-
+```text
 Dataset
+   │
+   ▼
+Read Data using Pandas
+   │
+   ▼
+Read CSV / Excel File
+   │
+   ▼
+Clean the Data
+   │
+   ▼
+Analyze the Data
+   │
+   ▼
+Train the Machine Learning Model
+   │
+   ▼
+Make Predictions
+```
 
-&#x20;  ↓
+---
 
-Pandas
+# 🎯 Summary
 
-&#x20;  ↓
-
-Read CSV
-
-&#x20;  ↓
-
-Clean Data
-
-&#x20;  ↓
-
-Analyse Data
-
-&#x20;  ↓
-
-Train ML Model
-
-&#x20;  ↓
-
-Prediction
-
-
-
-\---------------------------------------------------------------
-
-
-
+- **Pandas** is an open-source Python library for data manipulation and analysis.
+- The two main data structures are **Series** and **DataFrame**.
+- Pandas helps you read datasets, clean data, analyze information, and prepare data for Machine Learning.
+- It is one of the most essential libraries every Data Scientist and Machine Learning Engineer should know.

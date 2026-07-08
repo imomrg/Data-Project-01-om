@@ -1,508 +1,287 @@
-\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\* K-NEAREST NEIGHBORS (KNN) \*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*
+# 📘 K-Nearest Neighbors (KNN)
 
+## 1. What is K-Nearest Neighbors (KNN)?
 
+**K-Nearest Neighbors (KNN)** is a **Machine Learning algorithm**.
 
-##### 1\. What is KNN?
+It predicts an answer by looking at its **nearest (closest) neighbors**.
 
+Think of it like asking your closest friends for advice before making a decision.
 
+---
 
-KNN is a Machine Learning algorithm.
+# 2. Important Terms
 
+## 🤖 Machine Learning
 
+Machine Learning means **teaching a computer using examples instead of writing every rule manually.**
 
-It predicts an answer by looking at its nearest (closest) friends.
+---
 
+## 📊 Data
 
+**Data** means information.
 
-Think of it like asking your nearby friends before making a decision.
+### Example
 
+- Name
+- Age
+- Marks
+- Income
 
+---
 
-\---------------------------------------------------------------
+## 📂 Dataset
 
+A **Dataset** is a collection of many data points.
 
+### Example
 
-##### 2\. First understand some words
+Information of **1000 students**.
 
+---
 
+## 📥 Feature (Input)
 
-Machine Learning
+A **Feature** is the information given to the computer to make a prediction.
 
-\-> Teaching a computer using examples instead of writing every rule.
+### Examples
 
+- Study Hours
+- Attendance
+- Income
+- Credit Score
 
+---
 
-Data
+## 📤 Target (Output)
 
-\-> Information.
+The **Target** is the answer that we want the computer to predict.
 
+### Example
 
-
-Example:
-
-Name
-
-Age
-
-Marks
-
-Income
-
-
-
-\---------------------------------------------------------------
-
-
-
-Dataset
-
-\-> Collection of lots of data.
-
-
-
-Example:
-
-1000 students' information.
-
-
-
-\---------------------------------------------------------------
-
-
-
-Feature (Input)
-
-\-> Information given to the computer.
-
-
-
-Example:
-
-Study Hours
-
-Attendance
-
-Income
-
-Credit Score
-
-
-
-\---------------------------------------------------------------
-
-
-
-Target (Output)
-
-\-> The answer we want.
-
-
-
-Example:
-
+```
 Loan Approved?
+```
 
-YES or NO
+Possible outputs:
 
+- Yes
+- No
 
+---
 
-\---------------------------------------------------------------
+## 🎯 Prediction
 
+Prediction is the **computer's guess** based on the available data.
 
+### Example
 
-Prediction
+```
+Loan Approved
+```
 
-\-> Computer's Guess.
+This predicted answer is called a **Prediction**.
 
+---
 
+## 👥 Neighbor
 
-Example:
+A **Neighbor** is the **closest data point** to the new data.
 
+### Example
 
+Suppose you are a new student in a school.
 
-"Loan Approved"
+The teacher wants to guess your favorite game.
 
+Instead of asking everyone, she looks at your **closest friends**.
 
+Those closest friends are called **Neighbors**.
 
-This answer is called Prediction.
+---
 
+## 🔢 K
 
+**K** represents the **number of nearest neighbors** the algorithm considers before making a prediction.
 
-\---------------------------------------------------------------
+### Example
 
-
-
-Neighbour
-
-
-
-Neighbour = Closest Friend.
-
-
-
-Suppose you are new in school.
-
-
-
-Teacher wants to know your favourite game.
-
-
-
-She looks at your closest friends.
-
-
-
-Those closest friends are called Neighbours.
-
-
-
-\---------------------------------------------------------------
-
-
-
-K
-
-
-
-K = Number of neighbours.
-
-
-
-Example
-
-
-
+```
 K = 3
+```
 
+Look at the **3 nearest neighbors**.
 
-
-Look at nearest 3 friends.
-
-
-
+```
 K = 5
+```
 
+Look at the **5 nearest neighbors**.
 
+---
 
-Look at nearest 5 friends.
+## 🏷️ Class
 
+A **Class** is a category.
 
+### Example 1
 
-\---------------------------------------------------------------
+- Apple
+- Banana
+- Mango
 
+These are **3 different classes**.
 
+### Example 2
 
-Class
+- Loan Approved
+- Loan Rejected
 
+These are **2 different classes**.
 
+---
 
-Class = Category.
+## 📌 Classification
 
+**Classification** means **predicting a category or class**.
 
+### Examples
 
-Example
+- Cat or Dog
+- Spam or Not Spam
+- Loan Approved or Rejected
+- Red or Blue
 
+---
 
+## 📈 Regression
 
-Apple
+**Regression** means **predicting a numerical value**.
 
+### Examples
 
+- House Price = ₹50 Lakhs
+- Salary = ₹40,000
+- Marks = 95
+- Temperature = 35°C
 
-Banana
+---
 
+# 3. How KNN Works
 
+```text
+Choose the Value of K
+        │
+        ▼
+Find the Nearest Neighbors
+        │
+        ▼
+Check Their Classes
+        │
+        ▼
+Majority Vote Wins
+        │
+        ▼
+Make the Prediction
+```
 
-Mango
+---
 
+# 4. Real-Life Example
 
+Suppose a **new student** joins a school.
 
-There are 3 Classes.
+The nearest friends like:
 
+- 🏏 Cricket
+- 🏏 Cricket
+- ⚽ Football
 
+Since **most neighbors like Cricket**, the computer predicts:
 
-Loan Approved
+> **The new student also likes Cricket.**
 
+This is the basic idea behind **K-Nearest Neighbors (KNN).**
 
+---
 
-Loan Rejected
+# 5. Loan Approval Example
 
+### New Customer
 
+| Feature | Value |
+|---------|-------|
+| Income | ₹60,000 |
+| Credit Score | 750 |
 
-There are 2 Classes.
+### Nearest Customers
 
+- ✅ Approved
+- ✅ Approved
+- ❌ Rejected
+- ✅ Approved
 
+### Prediction
 
-\---------------------------------------------------------------
+> **Loan Approved**
 
+Since the majority of the nearest neighbors were **Approved**, KNN predicts that the new customer will also be **Approved**.
 
+---
 
-Classification
+# 6. Advantages
 
+- ✅ Easy to understand
+- ✅ Beginner-friendly
+- ✅ No complex mathematics
+- ✅ Works well for small datasets
+- ✅ Simple to implement
 
+---
 
-Classification = Predicting a Category.
+# 7. Disadvantages
 
+- ❌ Slow for large datasets
+- ❌ Choosing the wrong value of **K** can reduce accuracy
+- ❌ Performance decreases with high-dimensional data
 
+---
 
-Examples
+# 8. Applications
 
+KNN is commonly used in:
 
+- 💳 Loan Approval Prediction
+- 🩺 Disease Prediction
+- 😊 Face Recognition
+- 🎬 Recommendation Systems
+- ✉️ Spam Detection
+- 🛒 Customer Classification
 
-Cat or Dog
+---
 
+# 🎯 Summary
 
+- **K-Nearest Neighbors (KNN)** is a Machine Learning algorithm that predicts outcomes by looking at the **nearest neighbors**.
+- It can be used for both **Classification** and **Regression**, but it is mainly used for **Classification** problems.
+- The value of **K** determines how many neighbors are considered before making a prediction.
+- The algorithm predicts the class that appears **most frequently** among the nearest neighbors (majority voting).
 
-Spam or Not Spam
+### KNN Workflow
 
-
-
-Approved or Rejected
-
-
-
-Red or Blue
-
-
-
-\---------------------------------------------------------------
-
-
-
-Regression
-
-
-
-Regression = Predicting a Number.
-
-
-
-Examples
-
-
-
-House Price = ₹50 Lakhs
-
-
-
-Salary = ₹40,000
-
-
-
-Marks = 95
-
-
-
-Temperature = 35°C
-
-
-
-\---------------------------------------------------------------
-
-##### 
-
-##### 3\. How KNN Works
-
-
-
-Step 1
-
-
-
-Choose K.
-
-
-
-↓
-
-
-
-Step 2
-
-
-
-Find nearest neighbours.
-
-
-
-↓
-
-
-
-Step 3
-
-
-
-See their classes.
-
-
-
-↓
-
-
-
-Step 4
-
-
-
-Majority wins.
-
-
-
-↓
-
-
-
-Prediction.
-
-
-
-\---------------------------------------------------------------
-
-
-
-##### 4\. Real Life Example
-
-
-
-A new student comes.
-
-
-
-Nearest friends
-
-
-
-Cricket
-
-
-
-Cricket
-
-
-
-Football
-
-
-
-Most friends like Cricket.
-
-
-
-Computer says
-
-
-
-New student also likes Cricket.
-
-
-
-This is KNN.
-
-
-
-\---------------------------------------------------------------
-
-
-
-##### 5\. Loan Example
-
-
-
-New Customer
-
-
-
-Income = ₹60,000
-
-
-
-Credit Score = 750
-
-
-
-Nearest Customers
-
-
-
-Approved
-
-
-
-Approved
-
-
-
-Rejected
-
-
-
-Approved
-
-
-
+```text
+Input Data
+     │
+     ▼
+Choose K
+     │
+     ▼
+Find Nearest Neighbors
+     │
+     ▼
+Majority Voting
+     │
+     ▼
 Prediction
-
-
-
-Loan Approved
-
-
-
-\---------------------------------------------------------------
-
-
-
-Advantages
-
-
-
-✔ Easy
-
-✔ Beginner Friendly
-
-✔ No complex maths
-
-
-
-\---------------------------------------------------------------
-
-
-
-Disadvantages
-
-
-
-✘ Slow for large data
-
-
-
-✘ Wrong K gives wrong prediction
-
-
-
-\---------------------------------------------------------------
-
-
-
-Applications
-
-
-
-Loan Approval
-
-
-
-Disease Prediction
-
-
-
-Face Recognition
-
-
-
-Recommendation System
-
-
-
-\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*
-
+```
