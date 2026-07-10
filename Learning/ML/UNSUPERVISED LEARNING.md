@@ -9,7 +9,7 @@ Instead of being told the correct answer, the computer finds **patterns**, **sim
 Think of it like giving a child a box of mixed toys without telling them how to sort them.
 
 ```text
-Unlabeled Data
+Unlabeled Data 
        │
        ▼
 Computer Looks for Patterns
